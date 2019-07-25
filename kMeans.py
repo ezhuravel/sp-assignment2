@@ -21,10 +21,11 @@ def main(argv):
     print "NAME: Eugene Zhuravel. Iam Wodder, Israel Nolazco"
     print "PROGRAMMING ASSIGNMENT #2"
     print ""
-    
-    
+        
     points = openFile("prog2-input-data.txt")
-    
+
+    number = float(raw_input("Enter the number of clusters: "))    
+        
     pass
 
 if __name__ == "__main__":
