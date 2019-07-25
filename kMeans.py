@@ -14,6 +14,18 @@ def openFile(filename):
     lines = [float(x.rstrip()) for x in open(location)]
     return lines
 
+# initialized empty clusters with centroid as the 'key' value
+def initializeClusters(num_clusters, points):
+    clusters = {}
+    
+    index = 0
+    for num in points:
+        # make sure there are no more clusters than points
+        if(index < num_clusters):
+            index = index + 1
+            clusters[str(num)] = {}
+            
+
 # Entry point of application
 def main(argv):
     #Print header 
@@ -22,10 +34,18 @@ def main(argv):
     print "PROGRAMMING ASSIGNMENT #2"
     print ""
         
+    #read file
     points = openFile("prog2-input-data.txt")
 
-    number = float(raw_input("Enter the number of clusters: "))    
-        
+    #get user name
+    number_clusters = float(raw_input("Enter the number of clusters: "))    
+    
+    clusters = initializeClusters(number_clusters, points)
+    
+    # TODO: write k-means algorithm
+    
+    # TODO: print result
+    
     pass
 
 if __name__ == "__main__":
