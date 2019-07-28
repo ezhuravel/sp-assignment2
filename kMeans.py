@@ -133,7 +133,16 @@ def main(argv):
         for point in cluster:
             print ("Point " + str(point) + " in cluster " + str(cluster_num))
         cluster_num = cluster_num + 1
+#This will open prog2-output-data.txt, if not located it will create one file and add contents from line 131
+#the file will appear in the drive canopy is running in
+    cluster_num = 0
+    f= open("prog2-output-data.txt","w+")
+    for cluster in old_clusters.values():
+        for point in cluster:
+            f.write("Point " + str(point) + " in cluster " + str(cluster_num)+"\n")
+            cluster_num = cluster_num + 1
 
+    f.close()
     pass
     
 if __name__ == "__main__":
