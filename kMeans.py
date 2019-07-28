@@ -92,9 +92,11 @@ def main(argv):
         new_centroids = initialize_new_centroids(old_clusters, points)
         new_clusters = dict(zip(range(number_clusters), new_centroids.values()))
        
-        print ("Iteration" + str(iteration))
+        print ("Iteration " + str(iteration))
+        count = 0
         for value in old_clusters.values():
-            print (value)
+            print (str(count) + " " + str(value))
+            count = count + 1
         
         # When points don't move between clusters and when the centroids are the same we have achieved
         # the best clustering.
