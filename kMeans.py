@@ -62,15 +62,24 @@ def initialize_first_centroids(num_clusters, points=[]):
 
     return centroids
 
+def inputNumber(number_clusters):
+    while True:
+        try:
+            userInput = int(input(number_clusters))
+
+        except ValueError:
+            print("Not an integer! Try again.")
+        else:
+            return userInput
+            break  
 
 # Entry point of application
 def main(argv):
-
-    # Print header
-    print("CPSC-51100, Summer 2019")
-    print("NAME: Eugene Zhuravel. Iam Wodder, Israel Nolazco")
-    print("PROGRAMMING ASSIGNMENT #2")
-    print("")
+  # Print header
+  print("CPSC-51100, Summer 2019")
+  print("NAME: Eugene Zhuravel. Iam Wodder, Israel Nolazco")
+  print("PROGRAMMING ASSIGNMENT #2")
+  print("")
 
     # read file
     points = open_file("prog2-input-data.txt")
@@ -85,6 +94,7 @@ def main(argv):
     # than points. Create our first cluster mapping
     old_centroids = initialize_first_centroids(len(clusters), points)
     old_clusters = dict(zip(range(number_clusters), old_centroids.values()))
+
     
     iteration = 1
     while True:
@@ -96,12 +106,14 @@ def main(argv):
         count = 0
         for value in old_clusters.values():
             print (str(count) + " " + str(value))
+       
             count = count + 1
+        
         
         # When points don't move between clusters and when the centroids are the same we have achieved
         # the best clustering.
         if (new_clusters == old_clusters) and (new_centroids.keys() == old_centroids.keys()):
-            #print("They matched")  # TODO, remove just for example purposes
+            
             break
         else:
             # Assign new clusters to old clusters because we didn't match            
@@ -112,16 +124,19 @@ def main(argv):
         
         iteration = iteration +1 
         print ()
-
-    # TODO remove, just for verification that I achieve same output as the sample doc
+        
+    print("")
     
-    #print(old_centroids)
-
-    # TODO: print result
+#prints average element in each cluster
+    cluster_num = 0
+    for cluster in old_clusters.values():
+        for point in cluster:
+            print ("Point " + str(point) + " in cluster " + str(cluster_num))
+        cluster_num = cluster_num + 1
 
     pass
-
-
+    
 if __name__ == "__main__":
     main(sys.argv)
+
 
