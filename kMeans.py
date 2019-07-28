@@ -62,7 +62,6 @@ def initialize_first_centroids(num_clusters, points=[]):
 
     return centroids
 
-    #ensures user enters an integer
 def inputNumber(number_clusters):
     while True:
         try:
@@ -76,12 +75,11 @@ def inputNumber(number_clusters):
 
 # Entry point of application
 def main(argv):
-
-    # Print header
-    print("""CPSC-51100, Summer 2019
-NAME: Eugene Zhuravel. Iam Wodder, Israel Nolazco
-PROGRAMMING ASSIGNMENT #2
-""")
+  # Print header
+  print("CPSC-51100, Summer 2019")
+  print("NAME: Eugene Zhuravel. Iam Wodder, Israel Nolazco")
+  print("PROGRAMMING ASSIGNMENT #2")
+  print("")
 
     # read file
     points = open_file("prog2-input-data.txt")
@@ -96,6 +94,7 @@ PROGRAMMING ASSIGNMENT #2
     # than points. Create our first cluster mapping
     old_centroids = initialize_first_centroids(len(clusters), points)
     old_clusters = dict(zip(range(number_clusters), old_centroids.values()))
+
     
     iteration = 1
     while True:
