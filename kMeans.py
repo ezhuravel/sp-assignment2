@@ -115,7 +115,12 @@ def main(argv):
 
     # TODO remove, just for verification that I achieve same output as the sample doc
     
-    #print(old_centroids)
+    print()
+    cluster_num = 0
+    for cluster in old_clusters.values():
+        for point in cluster:
+            print ("Point " + str(point) + " in cluster " + str(cluster_num))
+        cluster_num = cluster_num + 1
 
     # TODO: print result
 
