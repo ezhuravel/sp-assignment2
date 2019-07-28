@@ -85,24 +85,35 @@ def main(argv):
     # than points. Create our first cluster mapping
     old_centroids = initialize_first_centroids(len(clusters), points)
     old_clusters = dict(zip(range(number_clusters), old_centroids.values()))
+    
+    iteration = 1
     while True:
+       
         new_centroids = initialize_new_centroids(old_clusters, points)
         new_clusters = dict(zip(range(number_clusters), new_centroids.values()))
-
+       
+        print ("Iteration" + str(iteration))
+        for value in old_clusters.values():
+            print (value)
+        
         # When points don't move between clusters and when the centroids are the same we have achieved
         # the best clustering.
         if (new_clusters == old_clusters) and (new_centroids.keys() == old_centroids.keys()):
-            print("They matched")  # TODO, remove just for example purposes
+            #print("They matched")  # TODO, remove just for example purposes
             break
         else:
-            # Assign new clusters to old clusters because we didn't match
-            print("Trying again")  # Same as above TODO
+            # Assign new clusters to old clusters because we didn't match            
             old_clusters = new_clusters
             old_centroids = new_centroids
+            
+        
+        
+        iteration = iteration +1 
+        print ()
 
     # TODO remove, just for verification that I achieve same output as the sample doc
-    print(old_clusters)
-    print(old_centroids)
+    
+    #print(old_centroids)
 
     # TODO: print result
 
