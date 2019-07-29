@@ -75,11 +75,11 @@ def inputNumber(number_clusters):
 
 # Entry point of application
 def main(argv):
-  # Print header
-  print("CPSC-51100, Summer 2019")
-  print("NAME: Eugene Zhuravel. Iam Wodder, Israel Nolazco")
-  print("PROGRAMMING ASSIGNMENT #2")
-  print("")
+    # Print header
+    print("CPSC-51100, Summer 2019")
+    print("NAME: Eugene Zhuravel. Iam Wodder, Israel Nolazco")
+    print("PROGRAMMING ASSIGNMENT #2")
+    print("")
 
     # read file
     points = open_file("prog2-input-data.txt")
@@ -126,23 +126,18 @@ def main(argv):
         print ()
         
     print("")
+    location = os.path.realpath(os.path.join(os.getcwd(), os.path.dirname(__file__)))
+    location = location + os.sep + "prog2-output-data.txt"
     
-#prints average element in each cluster
-    cluster_num = 0
-    for cluster in old_clusters.values():
-        for point in cluster:
-            print ("Point " + str(point) + " in cluster " + str(cluster_num))
-        cluster_num = cluster_num + 1
-#This will open prog2-output-data.txt, if not located it will create one file and add contents from line 131
-#the file will appear in the drive canopy is running in
-    cluster_num = 0
-    f= open("prog2-output-data.txt","w+")
-    for cluster in old_clusters.values():
-        for point in cluster:
-            f.write("Point " + str(point) + " in cluster " + str(cluster_num)+"\n")
-            cluster_num = cluster_num + 1
-
+    f= open(location,"w+")
+    for point in points:
+         for key in old_clusters.keys():
+             items = old_clusters.get(key)
+             if point in items:
+                 print("Point " + str(point) + " in cluster " + str(key))
+                 f.write("Point " + str(point) + " in cluster " + str(key)+"\n")
     f.close()
+
     pass
     
 if __name__ == "__main__":
